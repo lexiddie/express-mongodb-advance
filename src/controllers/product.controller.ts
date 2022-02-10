@@ -16,6 +16,69 @@ class ProductController implements Controller {
   }
 
   private initializeRoutes() {
+    /**
+     * @openapi
+     * /products:
+     *  post:
+     *     tags:
+     *     - Products
+     *     summary: creat a product
+     *     requestBody:
+     *      required: true
+     *      content:
+     *        application/json:
+     *           schema:
+     *              $ref: '#/components/schemas/CreateProductInput'
+     *     responses:
+     *       401:
+     *          description: Token Authentication Token's Missing
+     *       403:
+     *          description: You're not authorized
+     *       200:
+     *         description: create product is successful
+     *         content:
+     *          application/json:
+     *           schema:
+     *            type: object
+     *            properties:
+     *             status:
+     *              type: integer
+     *              default: 200
+     *             message:
+     *              type: string
+     *              default: Success
+     *             data:
+     *              type: object
+     *              properties:
+     *                _id:
+     *                 type: string
+     *                 default: 620472c3827c94a75690d050
+     *                user:
+     *                 type: string
+     *                 default: 620472b7827c94a75690d04a
+     *                productId:
+     *                 type: string
+     *                 default: product_y5du6tlmuf
+     *                title:
+     *                 type: string
+     *                 default: Canon EOS 1500D DSLR Camera with 18-55mm Lens
+     *                price:
+     *                 type: double
+     *                 default: 879.99
+     *                description:
+     *                 type: string
+     *                 default: Designed for first-time DSLR owners who want impressive results straight out of the box
+     *                image:
+     *                 type: string
+     *                 default: https://i.imgur.com/QlRphfQ.jpg
+     *                createdAt:
+     *                 type: string
+     *                 default: 2022-02-10T02:04:51.666Z
+     *                updatedAt:
+     *                 type: string
+     *                 default: 2022-02-10T02:04:51.666Z
+     */
+
     this.router.post(`${this.path}`, [requireUser, validateResource(createProductSchema)], this.createProductHandler);
     this.router.put(`${this.path}/:productId`, [requireUser, validateResource(updateProductSchema)], this.updateProductHandler);
     this.router.get(`${this.path}/:productId`, validateResource(getProductSchema), this.getProductHandler);

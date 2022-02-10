@@ -10,6 +10,32 @@ class HealthController implements Controller {
     this.initializeRoutes();
   }
 
+  /**
+   * @openapi
+   * /health:
+   *  get:
+   *     tags:
+   *     - health
+   *     description: Responds if the app is up and running
+   *     responses:
+   *       200:
+   *         description: App is up and running
+   *         content:
+   *          application/json:
+   *           schema:
+   *            type: object
+   *            properties:
+   *             status:
+   *              type: integer
+   *              default: 200
+   *             message:
+   *              type: string
+   *              default: success
+   *             data:
+   *              type: object
+   *              default: ok
+   */
+
   private initializeRoutes() {
     this.router.get(`${this.path}`, this.checkHealthHandler);
   }

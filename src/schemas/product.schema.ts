@@ -3,8 +3,8 @@ import { object, number, string, TypeOf } from 'zod';
 /**
  * @openapi
  * components:
- *   schema:
- *     Product:
+ *  schemas:
+ *     CreateProductInput:
  *       type: object
  *       required:
  *        - title
@@ -14,13 +14,48 @@ import { object, number, string, TypeOf } from 'zod';
  *       properties:
  *         title:
  *           type: string
+ *           default: Canon EOS 1500D DSLR Camera with 18-55mm Lens
  *         description:
  *           type: string
+ *           default: Designed for first-time DSLR owners who want impressive results straight out of the box
  *         price:
  *           type: number
+ *           default: 879.99
  *         image:
  *           type: string
+ *           default: https://i.imgur.com/QlRphfQ.jpg
  */
+
+// /**
+//  * @openapi
+//  * components:
+//  *     CreateProductInput:
+//  *       type: object
+//  *       required:
+//  *        - title
+//  *        - description
+//  *        - price
+//  *        - image
+//  *       properties:
+//  *          _id:
+//  *           type: string
+//  *          productId:
+//  *           type: string
+//  *          user:
+//  *           type: string
+//  *         title:
+//  *           type: string
+//  *         description:
+//  *           type: string
+//  *         price:
+//  *           type: number
+//  *         image:
+//  *           type: string
+//  *         createdAt:
+//  *           type: number
+//  *         updatedAt:
+//  *           type: string
+//  */
 
 const payload = {
   body: object({

@@ -8,6 +8,7 @@ import Controller from './interfaces/controller.interface';
 import { errorMiddleware, deserializeUser } from './middleware';
 import helmet from 'helmet';
 import { restResponseTimeHistogram } from './utils/metrics.utils';
+import swaggerDocs from './utils/swagger';
 
 const port = config.get('port') as number;
 const host = config.get('host') as string;
@@ -28,6 +29,7 @@ class App {
   public listen() {
     this.app.listen(port, host, () => {
       log.info(`Server listing at http://${host}:${port}`);
+      swaggerDocs(this.app, port);
     });
   }
 
